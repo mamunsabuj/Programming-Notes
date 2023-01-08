@@ -3,11 +3,9 @@
 - Open terminal from to location
 - sudo scp username:host:/from_location /to_location
 
-## Nginx Vertual Host
-  ### Install SSL
-  - sudo certbot --nginx -d example.com -d www.example.com
 
 ## Default Nginx Virtual host 
+
 server {
         server_name example.stylezworld.net;
         root /var/www/html/example.com/public;
@@ -38,5 +36,14 @@ server {
         location ~ /\.(?!well-known).* {
                 deny all;
         }
-    
 }
+
+## Nginx Vertual Host
+### Nginx 
+- sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+- sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
+  ### Install SSL
+  - sudo certbot --nginx -d example.com -d www.example.com
+  - For Auto Renewal   sudo systemctl status certbot.timer
+
+
