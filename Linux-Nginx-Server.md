@@ -47,3 +47,8 @@ server {
   - For Auto Renewal   sudo systemctl status certbot.timer
 
 
+## Nginx Setup and Configuration
+apt install nginx
+
+
+
