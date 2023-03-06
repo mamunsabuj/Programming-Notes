@@ -162,6 +162,39 @@ To copy a file from B to A while logged into A:
 
 scp username@b:/path/to/file /path/to/destination
 
-
-
-
+## How To Connect to MySQL Managed Database via phpMyAdmin
+        
+Tutorial:  https://www.digitalocean.com/community/tutorials/how-to-connect-to-mysql-managed-database-via-phpmyadmin
+        
+### Step 1 — Installing phpMyAdmin and Configuring Apache
+        - sudo apt update
+        - sudo apt -y install phpmyadmin
+        - sudo nano /etc/apache2/apache2.conf
+        Add the following line to the bottom of the file:
+         phpMyAdmin Configuration
+          Include /etc/phpmyadmin/apache.conf
+### Step 2 — Configuring phpMyAdmin with MySQL Managed Database
+    - Navigate to your MySQL Managed Database panel and find the Connection Details section. Click the Download CA certificate link to download the ca-         certificate.crt file from your database page overview tab:
+        
+       - scp Downloads/ca-certificate.crt root@your-server-ip:/etc/phpmyadmin
+        - sudo nano /etc/phpmyadmin/config.inc.php
+        
+        Add following lines in bottom
+        $i++;
+        $cfg['Servers'][$i]['host'] = 'your_database_cluster_hostname.b.db.ondigitalocean.com';
+        $cfg['Servers'][$i]['port'] = '25060';
+        $cfg['Servers'][$i]['ssl'] = true;
+        $cfg['Servers'][$i]['ssl_ca'] = '/etc/phpmyadmin/ca-certificate.crt';
+        
+        or  another  code
+        $i++;
+        /* Authentication type */
+        $cfg['Servers'][$i]['auth_type'] = 'cookie';
+        /* Server parameters */
+        $cfg['Servers'][$i]['host'] = 'db-mysql-sgp1-73738-do-user-7928468-0.b.db.ondigitalocean.com:25060';
+        $cfg['Servers'][$i]['compress'] = false;
+        $cfg['Servers'][$i]['AllowNoPassword'] = true;
+        
+        - sudo service apache2 restart
+        
+        
