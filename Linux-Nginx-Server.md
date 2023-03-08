@@ -1,3 +1,9 @@
+#Linux Server
+ - df -h
+ - htop
+ - du [directory]
+ - 
+
 
 ## Copy a file from server to local SSH
 - Open terminal from to location
