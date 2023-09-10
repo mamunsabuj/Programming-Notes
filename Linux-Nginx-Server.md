@@ -156,12 +156,13 @@ sudo ufw disable
 sudo ufw enable
 
 
-# # Remove big files directory
+## Remove big files directory
 
+```
 sudo find . -name 'PHP*' | xargs rm
 or
 sudo find . -type f -name "*.txt" -delete
-
+```
 
 
 ### File Copy from one server to another
