@@ -159,6 +159,8 @@ sudo ufw enable
 # # Remove big files directory
 
 sudo find . -name 'PHP*' | xargs rm
+or
+sudo find . -type f -name "*.txt" -delete
 
 
 
